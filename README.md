@@ -42,3 +42,10 @@ Asignatura impartida por el **Departamento de Ingeniería Eléctrica, Electróni
 Este repositorio tiene finalidad exclusivamente docente.
 
 Si detectas algún error o tienes alguna sugerencia de mejora, puedes comunicarlo al profesorado de la asignatura.
+
+
+# Proyecto SII - Juego del Tenis (56730)
+Aplicación gráfica en C++ con OpenGL y GLUT que simula un juego de tenis para dos jugadores en modo local.
+
+## Funcionalidades desarrolladas
+* **Práctica 1:** Configuración del entorno de compilación con CMake/Make y programación del movimiento interactivo de las raquetas (`w`/`s` y `o`/`l`) y de la esfera.
