@@ -49,3 +49,4 @@ Aplicación gráfica en C++ con OpenGL y GLUT que simula un juego de tenis para 
 
 ## Funcionalidades desarrolladas
 * **Práctica 1:** Configuración del entorno de compilación con CMake/Make y programación del movimiento interactivo de las raquetas (`w`/`s` y `o`/`l`) y de la esfera.
+* **Práctica 2:** Programa logger que recibe del juego, mediante una tubería con nombre (FIFO), los puntos de cada jugador y los muestra por pantalla. El juego y el logger terminan cuando un jugador llega a 3 puntos.
