@@ -11,6 +11,7 @@
 #include <math.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/mman.h>
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -118,6 +119,11 @@ void CMundo::OnDraw()
 
 void CMundo::OnTimer(int value)
 {	
+	pdatos->esfera = esfera;
+	pdatos->raqueta1 = jugador1;
+	if (pdatos->accion == 1) OnKeyboardDown('w', 0, 0);
+	else if (pdatos->accion == -1) OnKeyboardDown('s', 0, 0);
+	else jugador1.velocidad.y = 0;
 	jugador1.Mueve(0.025f);
 	jugador2.Mueve(0.025f);
 	esfera.Mueve(0.025f);
@@ -205,4 +211,9 @@ void CMundo::Init()
 	jugador2.x2=6;jugador2.y2=1;
 	fd_logger = open("/tmp/FIFO_LOGGER", O_WRONLY);
 	if (fd_logger < 0) perror("No puede abrirse el FIFO del logger");
+	int fd_bot = open("/tmp/datosBot", O_RDWR|O_CREAT|O_TRUNC, 0666);
+	ftruncate(fd_bot, sizeof(DatosMemCompartida));
+	pdatos = (DatosMemCompartida*)mmap(NULL, sizeof(DatosMemCompartida), PROT_READ|PROT_WRITE, MAP_SHARED, fd_bot, 0);
+	close(fd_bot);
+	pdatos->accion = 0;
 }
